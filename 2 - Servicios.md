@@ -42,3 +42,47 @@ services:
     ports:
       - "5432:5432"
 ```
+
+Podemos conectarno a travez de cualquier IDE de base de datos
+
+### Agregando variables de entorno desde el archivo .env
+
+Creamos un archivo .env con la siguiente informacion
+
+```
+POSTGRES_USER=admin
+POSTGRES_PASSWORD=secret
+```
+
+Definimos el docker compose
+
+```yaml
+services:
+  db:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+    ports:
+      - "5432:5432"
+```
+
+### Agregando variables de entorno usando ```env_file ```
+
+Creamos un archivo .env con la siguiente informacion
+
+```
+POSTGRES_USER=admin
+POSTGRES_PASSWORD=secret
+```
+
+Definimos el docker compose
+```yaml
+services:
+  db:
+    image: postgres:13
+    env_file:
+      - .env
+    ports:
+      - "5432:5432"
+```
