@@ -101,3 +101,8 @@ services:
       - "5432:5432"
 ```
 
+> [!NOTE]
+> Nunca envíe archivos .env que contengan datos confidenciales (p. ej., claves API o contraseñas) a sistemas de control de versiones. Use .gitignore para excluir archivos .env.
+
+> [!NOTE]
+> Utilice los secretos de Docker para la información confidencial en entornos de producción. Docker Compose cuenta con soporte nativo para gestionar los secretos de forma más segura
