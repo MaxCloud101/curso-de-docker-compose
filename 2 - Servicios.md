@@ -86,3 +86,18 @@ services:
     ports:
       - "5432:5432"
 ```
+
+Podemos sobrescribir las variables de entorno definidas en el ```env_file``` con atributos en environment
+
+```yaml
+services:
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_PASSWORD: supersecret
+    env_file:
+      - .env
+    ports:
+      - "5432:5432"
+```
+
