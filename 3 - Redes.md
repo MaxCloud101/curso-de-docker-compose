@@ -31,3 +31,30 @@ services:
 ```
 
 Aqui vemos que ```EXCHANGE_URL``` es la variable de entorno que tiene la direccion por la cual el servicio ```app``` se puede comunicar con el servicio```exchange```. Esta comunicacion se hace mediante la red por defecto, usando los nombres de los servicios como DNS hostnames.
+
+### Definiendo una red personalizada
+
+Definimos una red personalizada con el nombre ```custom_network```
+
+```yml
+networks:
+  custom_network:
+
+services:
+  exchange:
+    build:
+      dockerfile: Dockerfile_exchange
+    networks:
+      - custom_network
+
+  app:
+     build:
+       dockerfile: Dockerfile
+     environment:
+       - EXCHANGE_URL=exchange:8000
+     ports:
+       - "9090:9090"
+    networks:
+      - custom_network
+```
+
