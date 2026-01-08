@@ -11,8 +11,26 @@ $ docker compose up
 En caso se necesite reconstruir las imagenes usamos:
 
 ```sh
-$ docker-compose up --build
+$ docker compose up --build
 ```
+
+Para correr en modo detach:
+
+```sh
+$ docker compose up -d
+```
+
+Para detener los servicios
+
+```sh
+$ docker compose down
+```
+Para ver todos los servicios levantados con docker compose
+
+```sh
+$ docker compose ls
+```
+
 
 ## Trabajando con servicios 
 
