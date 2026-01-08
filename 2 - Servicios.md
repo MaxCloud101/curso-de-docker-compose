@@ -112,3 +112,16 @@ services:
 
 > [!NOTE]
 > Utilice los secretos de Docker para la información confidencial en entornos de producción. Docker Compose cuenta con soporte nativo para gestionar los secretos de forma más segura
+
+### Arrancando un servicio desde el Dockerfile
+
+Nos colocamos en la carpeta flaskapp dentro de este repositorio. Alli verificamos el archivo ```docker-compose.yaml``` donde arrancamos el servicio desde un Dockerfile
+
+```
+services:
+  flaskapp:
+    build:
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+```
