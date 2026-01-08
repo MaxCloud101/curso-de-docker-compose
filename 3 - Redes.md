@@ -58,3 +58,30 @@ services:
       - custom_network
 ```
 
+### 1 Definiendo una red bridge
+
+El modo de red más común en Docker Compose es la red bridge, que permite que los contenedores de la misma red se comuniquen entre sí. Este es el modo predeterminado para las redes, a menos que se especifique explícitamente otro controlador de red.
+
+```yml
+networks:
+  custom_network:
+    driver: bridge
+
+services:
+  exchange:
+    build:
+      dockerfile: Dockerfile_exchange
+    networks:
+      - custom_network
+
+  app:
+     build:
+       dockerfile: Dockerfile
+     environment:
+       - EXCHANGE_URL=exchange:8000
+     ports:
+       - "9090:9090"
+    networks:
+      - custom_network
+```
+
