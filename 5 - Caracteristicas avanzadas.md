@@ -86,8 +86,47 @@ services:
     restart: always
 ```
 
+### Anulaciones específicas del entorno con perfiles
 
+Docker Compose introdujo el concepto de perfiles, que permite habilitar o deshabilitar servicios de forma selectiva según el entorno. Los perfiles permiten definir qué servicios deben ejecutarse en entornos específicos (por ejemplo, producción o desarrollo).
 
+```yaml
+services:
+  web:
+    image: nginx
+    profiles:
+      - production
 
+  debug:
+    image: busybox
+    profiles:
+      - debug
+```
+
+Puede especificar el perfil que se utilizará al ejecutar Docker Compose:
+
+```sh
+docker-compose --profile production up
+```
+
+## Uso de Docker Secrets para la gestión segura de datos
+
+Para gestionar datos confidenciales como contraseñas, claves API o certificados, Docker ofrece una forma segura de gestionar secretos. En Docker Compose, los secretos se almacenan de forma segura fuera del contenedor y se inyectan en tiempo de ejecución.
+
+```sh
+echo "my-super-secret-password" > ./secrets/db_password.txt
+```
+
+```yaml
+services:
+  app:
+    image: myapp:latest
+    secrets:
+      - db_password
+
+secrets:
+  db_password:
+    file: ./secrets/db_password.txt
+```
 
 
