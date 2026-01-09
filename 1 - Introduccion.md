@@ -23,6 +23,37 @@ Imagina una aplicación web con:
 
 - Un contenedor para tu aplicación (frontend/backend).
 - Un contenedor para una base de datos (ej: PostgreSQL).
-- Un contenedor para un servicio de caché (ej: Redis). 
+- Un contenedor para un servicio de caché (ej: Redis).
+
+## Comandos 
+
+Para crear y levantar todos los servicios de una aplicación Docker definidos el archivo ```docker-compose.yml``` usaremos:
+
+```sh
+$ docker compose up
+```
+
+En caso se necesite reconstruir las imagenes usamos:
+
+```sh
+$ docker compose up --build
+```
+
+Para correr en modo detach:
+
+```sh
+$ docker compose up -d
+```
+
+Para detener los servicios
+
+```sh
+$ docker compose down
+```
+Para ver todos los servicios levantados con docker compose
+
+```sh
+$ docker compose ls
+```
 
 Con Docker Compose, defines estos tres en docker-compose.yml, y con un solo comando, se crean y conectan. 
