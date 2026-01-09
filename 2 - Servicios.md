@@ -2,36 +2,6 @@
 
 Los servicios en Docker Compose son los componentes individuales de una aplicación (como un backend, una base de datos, un frontend) definidos en el archivo docker-compose.yml, que se ejecutan en contenedores separados pero orquestados juntos.
 
-Para crear y levantar todos los servicios de una aplicación Docker definidos el archivo ```docker-compose.yml``` usaremos:
-
-```sh
-$ docker compose up
-```
-
-En caso se necesite reconstruir las imagenes usamos:
-
-```sh
-$ docker compose up --build
-```
-
-Para correr en modo detach:
-
-```sh
-$ docker compose up -d
-```
-
-Para detener los servicios
-
-```sh
-$ docker compose down
-```
-Para ver todos los servicios levantados con docker compose
-
-```sh
-$ docker compose ls
-```
-
-
 ## Trabajando con servicios 
 
 ### Definicion de un servicio 
