@@ -48,12 +48,12 @@ services:
       - custom_network
 
   app:
-     build:
-       dockerfile: Dockerfile
-     environment:
-       - EXCHANGE_URL=exchange:8000
-     ports:
-       - "9090:9090"
+    build:
+      dockerfile: Dockerfile
+    environment:
+      - EXCHANGE_URL=exchange:8000
+    ports:
+      - "9090:9090"
     networks:
       - custom_network
 ```
