@@ -51,12 +51,28 @@ services:
     image: postgres
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
-      interval: 30s
-      timeout: 10s
-      retries: 5
+      interval: 10s
+      timeout: 5s
+      retries: 2
 ```
 
-En este caso, Docker comprobará cada 30 segundos si la base de datos de Postgres está lista para aceptar conexiones. Si el servicio falla la comprobación 5 veces, Docker lo marcará como unhealthy.
+En este caso, Docker comprobará cada 10 segundos si la base de datos de Postgres está lista para aceptar conexiones. Si el servicio falla la comprobación 2 veces, Docker lo marcará como unhealthy.
+
+```yaml
+services:
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: secret
+    healthcheck:
+      test: ["CMD-SHELL","PGPASSWORD=secret psql -U admin -d postgres -c 'SELECT 1' || exit 1"]
+      interval: 10s
+      timeout: 3s
+      retries: 2
+```
+
+En este caso, Docker comprobará si el usuario existe, de no existir lo marcara el container como unhealthy. 
 
 ### Gestión de limitaciones de recursos
 
