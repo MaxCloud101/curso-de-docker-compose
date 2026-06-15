@@ -34,7 +34,10 @@ services:
       - db
 
   db:
-    image: postgres
+    image: postgres:13
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: secret
 ```
 
 
