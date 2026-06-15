@@ -9,7 +9,7 @@ Una de las características más útiles de Docker Compose es la posibilidad de 
 Puede escalar servicios usando la opción ```--scale``` con ```docker-compose up```:
 
 ```sh
-docker-compose up --scale web=3
+docker compose up --scale web=3
 ```
 
 Alternativamente, puede definir réplicas de servicio en su ```docker-compose.yml```:
