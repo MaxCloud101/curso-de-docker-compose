@@ -133,13 +133,18 @@ docker-compose --profile production up
 Para gestionar datos confidenciales como contraseñas, claves API o certificados, Docker ofrece una forma segura de gestionar secretos. En Docker Compose, los secretos se almacenan de forma segura fuera del contenedor y se inyectan en tiempo de ejecución.
 
 ```sh
-echo "secret-password" > db_password.txt
+echo "secretpassword" > db_password.txt
 ```
 
 ```yaml
 services:
-  app:
-    image: myapp:latest
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD_FILE: /run/secrets/db_password
+    ports:
+      - "5432:5432"
     secrets:
       - db_password
 
