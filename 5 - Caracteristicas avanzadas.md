@@ -49,6 +49,9 @@ Docker Compose permite definir comprobaciones de estado para supervisar el estad
 services:
   db:
     image: postgres
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: secret
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 10s
